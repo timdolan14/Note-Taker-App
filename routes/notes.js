@@ -2,11 +2,11 @@ const path = require('path');
 const app = require('express').Router();
 // const uuid = require('');
 
-app.get('/api/notes', (req, res) =>
+app.get('/notes', (req, res) =>
   readFromFile(path.join(__dirname, '../db/db.json'))
 );
 
-app.post('/api/notes', (req, res) => {
+app.post('/notes', (req, res) => {
   let newEntry = {
     id: "",
     title: body.title,
@@ -30,4 +30,4 @@ app.listen(PORT, () =>
 );
 
 
-module.export = app;
+module.exports = app;
