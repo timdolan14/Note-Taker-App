@@ -1,14 +1,38 @@
 const path = require('path');
+const app = require('express').Router();
+// const uuid = require('');
 
-// GET Route for homepage
-app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '../public/notes.html'))
+app.get('/api/notes', (req, res) =>
+  readFromFile(path.join(__dirname, '../db/db.json'))
 );
 
-// GET Route for notes page
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '../public/index.html'))
+app.post('/api/notes', (req, res) => {
+  let newEntry = {
+    id: "",
+    title: body.title,
+    text: body.text,
+  }
+
+
+  fs.readFile('../db/db.json', (req, res) => {
+    let newData = JSON.parse(data);
+    newData.push(newEntry);
+
+    readAndAppend(newEntry, './db/tips.json');
+    res.json(`Added successfully 🚀`);
+    res.error('Error in adding tip');
+  })
+
+
+
+});
+
+
+
+
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
 
 
-module.exports = app;
+module.export = app;
