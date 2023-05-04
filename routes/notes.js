@@ -18,17 +18,12 @@ app.post('/api/notes', (req, res) => {
     let newData = JSON.parse(data);
     newData.push(newEntry);
 
-    readAndAppend(newEntry, './db/tips.json');
+    readAndAppend(newEntry, '../db/db.json');
     res.json(`Added successfully 🚀`);
     res.error('Error in adding tip');
   })
 
-
-
 });
-
-
-
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
