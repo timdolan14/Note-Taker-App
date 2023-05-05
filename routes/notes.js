@@ -5,7 +5,7 @@ const db = require("../db/db.json");
 console.log(db);
 
 app.get('/notes', (req, res) => {
-  fs.readFile(path.join(__dirname, "../db/db.json"), "utf-8", (data) => {
+  fs.readFile(path.join(__dirname, "./db/db.json"), "utf-8", (data) => {
     console.log(data);
     res.json(data)
   })
@@ -19,12 +19,12 @@ app.post('/notes', (req, res) => {
 
   console.log(newEntry);
 
-  fs.readFile("../db/db.json", "utf-8", (data) => {
+  fs.readFile("./db/db.json", "utf-8", (data) => {
     let newData = JSON.parse(data);
     newData.push(newEntry);
   }).then (() => {
-    fs.writeFile("../db/db.json", JSON.stringify(newData), null, "  ");
-    res.json(`Added successfully 🚀`);
+    fs.writeFile("./db/db.json", JSON.stringify(newData), null, "  ");
+    res.send(`Added successfully 🚀`);
     res.error('Error in adding values');
   }) 
 
