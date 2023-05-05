@@ -1,26 +1,30 @@
 const path = require('path');
 const app = require('express').Router();
-// const uuid = require('');
+const fs = require('fs');
+const db = require("../db/db.json");
 
-app.get('/notes', (req, res) =>
-  readFromFile(path.join(__dirname, '../db/db.json'))
-);
+app.get('/notes', (req, res) => {
+  fs.readFile(path.join(__dirname, "./db/db.json"), "utf-8", (data) => {
+    console.log(data);
+    res.json(data)
+  })
+});
 
 app.post('/notes', (req, res) => {
   let newEntry = {
-    id: "",
-    title: body.title,
-    text: body.text,
+    title: req.body.title,
+    text: req.body.text,
   }
 
+  console.log(newEntry);
 
-  fs.readFile('../db/db.json', (req, res) => {
+  fs.readFile("../db/db.json", "utf-8", (data) => {
     let newData = JSON.parse(data);
     newData.push(newEntry);
 
-    readAndAppend(newEntry, '../db/db.json');
+    fs.writeFile(path.join(__dirname, "../db/db.json"), newEntry);
     res.json(`Added successfully 🚀`);
-    res.error('Error in adding tip');
+    res.error('Error in adding values');
   })
 
 });
