@@ -1,6 +1,7 @@
 # Note-Taker-App
 
-## Deployed URL
+## Deployed Link
+https://td-note-taker.herokuapp.com/notes
 
 ## Github Repo
 
