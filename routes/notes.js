@@ -3,7 +3,7 @@ const app = require('express').Router();
 const fs = require('fs');
 const db = require("../db/db.json");
 console.log(db);
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 app.get('/notes', (req, res) => {
   fs.readFile(path.join(__dirname, "../db/db.json"), "utf-8", (err, data) => {
@@ -15,7 +15,7 @@ app.get('/notes', (req, res) => {
 
 app.post('/notes', (req, res) => {
   let newEntry = {
-    // id: uuid(),
+    id: uuidv4(),
     title: req.body.title,
     text: req.body.text,
   }
