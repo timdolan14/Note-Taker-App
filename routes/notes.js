@@ -15,7 +15,7 @@ app.get('/notes', (req, res) => {
 
 app.post('/notes', (req, res) => {
   let newEntry = {
-    id: uuid(),
+    // id: uuid(),
     title: req.body.title,
     text: req.body.text,
   }
