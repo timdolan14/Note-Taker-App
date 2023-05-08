@@ -1,4 +1,4 @@
-# Note-Taker-App
+# Note Taker App
 
 ## Deployed Link
 https://td-note-taker.herokuapp.com/notes
